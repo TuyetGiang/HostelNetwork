@@ -1,6 +1,7 @@
 package com.giang.repository.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "user")
@@ -30,6 +31,9 @@ public class User {
 
     @Column(name = "role_id")
     private Integer roleId;
+
+    @Column(name = "regist_date")
+    private LocalDate registDate;
 
     @Column(name = "is_blocked")
     private Boolean isBlocked;
@@ -108,6 +112,14 @@ public class User {
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    public LocalDate getRegistDate() {
+        return registDate;
+    }
+
+    public void setRegistDate(LocalDate registDate) {
+        this.registDate = registDate;
     }
 
     public Boolean getBlocked() {

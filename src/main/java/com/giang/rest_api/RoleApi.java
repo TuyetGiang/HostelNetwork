@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Component
-@RequestMapping("role")
+@RequestMapping("roles")
 public interface RoleApi {
-    @ApiOperation(tags = "ROLE", value = "Create new role", response = RoleDTO.class)
+    @ApiOperation(tags = "ROLE", value = "Create new a role", response = RoleDTO.class)
     @PostMapping("")
     ResponseEntity<RoleDTO> insert(@RequestBody RoleDTO dto);
 
@@ -26,7 +26,7 @@ public interface RoleApi {
                                    @RequestParam("key") String key,
                                    @RequestParam("value") Object value);
 
-    @ApiOperation(tags = "ROLE", value = "Get all role", response = RoleDTO.class)
+    @ApiOperation(tags = "ROLE", value = "Get all roles", response = RoleDTO.class)
     @GetMapping("")
     ResponseEntity<List<RoleDTO>> getAll();
 

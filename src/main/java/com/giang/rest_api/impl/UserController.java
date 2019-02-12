@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -26,5 +27,10 @@ public class UserController implements UserApi {
     public ResponseEntity<Boolean> updateStatusUser(@PathVariable("id") Integer id, Boolean status) {
         userService.updateStatusUser(id, status);
         return ResponseEntity.ok(true);
+    }
+
+    @Override
+    public ResponseEntity<List<UserDTO>> getUserByTime(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return null;
     }
 }

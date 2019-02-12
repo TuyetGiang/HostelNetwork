@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 @RequestMapping("/benefits")
 public interface BenefitApi {
-    @ApiOperation(tags = "BENEFIT", value = "Create new benefit", response = BenefitDTO.class)
+    @ApiOperation(tags = "BENEFIT", value = "Create new a benefit", response = BenefitDTO.class)
     @PostMapping("")
     ResponseEntity<BenefitDTO> insert(@RequestBody BenefitDTO dto);
 
@@ -26,7 +26,7 @@ public interface BenefitApi {
                                       @RequestParam("key") String key,
                                       @RequestParam("value") Object value);
 
-    @ApiOperation(tags = "BENEFIT", value = "Get all benefit", response = BenefitDTO.class)
+    @ApiOperation(tags = "BENEFIT", value = "Get all benefits", response = BenefitDTO.class)
     @GetMapping("")
     ResponseEntity<List<BenefitDTO>> getAll();
 
