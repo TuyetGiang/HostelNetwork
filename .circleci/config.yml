@@ -30,22 +30,22 @@ jobs:
       - run:
           name: Build container
           command: |
-            docker build -f Dockerfile -t hostel-network-api:latest .
+            docker build -f Dockerfile -t hostel-network-admin-api:latest .
       - run:
           name: Save image layer cache
           command: |
-            docker save -o hostel_network_api.tar hostel-network-api:latest
+            docker save -o hostel_network_admin_api.tar hostel-network-admin-api:latest
       - run:
           name: Save image to shared workspace and as artifact
           command: |
             mkdir workspace
             mkdir artifacts
-            cp hostel_network_api.tar workspace/
-            cp hostel_network_api.tar artifacts/
+            cp hostel_network_admin_api.tar workspace/
+            cp hostel_network_admin_api.tar artifacts/
       - persist_to_workspace:
           root: workspace
           paths:
-            - hostel_network_api.tar
+            - hostel_network_admin_api.tar
       - store_artifacts:
           path: /app/artifacts
   deploy_production:
@@ -70,24 +70,28 @@ jobs:
           name: Push image to server
           command: |
             ssh $SSH_USER@$SERVER_IP 'mkdir -p ~/docker-images'
-            scp hostel_network_api.tar $SSH_USER@$SERVER_IP:~/docker-images
+            scp hostel_network_admin_api.tar $SSH_USER@$SERVER_IP:~/docker-images
       - run:
-          name: Import image in server
+          name: Delete old image(s) in server
           command: |
-            ssh $SSH_USER@$SERVER_IP 'docker load --input ~/docker-images/hostel_network_api.tar'
+            ssh $SSH_USER@$SERVER_IP 'docker rmi hostel-network-admin-api || true'
+      - run:
+          name: Import new image in server
+          command: |
+            ssh $SSH_USER@$SERVER_IP 'docker load --input ~/docker-images/hostel_network_admin_api.tar'
       - run:
           name: Stop and remove old container
           command: |
-            ssh $SSH_USER@$SERVER_IP 'docker stop hostel-network-api || true'
-            ssh $SSH_USER@$SERVER_IP 'docker rm hostel-network-api || true'
+            ssh $SSH_USER@$SERVER_IP 'docker stop hostel-network-admin-api || true'
+            ssh $SSH_USER@$SERVER_IP 'docker rm hostel-network-admin-api || true'
       - run:
           name: Create and start container
           command: |
-            ssh $SSH_USER@$SERVER_IP 'docker run -p 1006:8080 --name hostel-network-api -d hostel-network-api:latest'
+            ssh $SSH_USER@$SERVER_IP 'docker run -p 1006:8080 --name hostel-network-admin-api -d hostel-network-admin-api:latest'
       - run:
           name: Delete container tar image
           command: |
-            ssh $SSH_USER@$SERVER_IP 'rm -rf ~/docker-images/hostel_network_api.tar'
+            ssh $SSH_USER@$SERVER_IP 'rm -rf ~/docker-images/hostel_network_admin_api.tar'
 workflows:
   version: 2
   build_and_deploy:
