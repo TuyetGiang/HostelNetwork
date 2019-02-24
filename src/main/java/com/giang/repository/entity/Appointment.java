@@ -27,6 +27,9 @@ public class Appointment {
     @Column(name = "create_date")
     private LocalDate createDate;
 
+    @Column(name = "status")
+    private Integer status;
+
     public Integer getId() {
         return id;
     }
@@ -73,5 +76,13 @@ public class Appointment {
 
     public void setCreateDate(LocalDate createDate) {
         this.createDate = createDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

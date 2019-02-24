@@ -13,9 +13,6 @@ public class Benefit {
     @Column(name = "benefit_name")
     private String benefitName;
 
-    @Column(name = "description")
-    private String description;
-
     public Integer getId() {
         return id;
     }
@@ -32,11 +29,4 @@ public class Benefit {
         this.benefitName = benefitName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

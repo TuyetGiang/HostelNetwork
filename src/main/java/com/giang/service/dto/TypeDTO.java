@@ -7,8 +7,6 @@ public class TypeDTO implements Serializable {
 
     private String typeName;
 
-    private String despription;
-
     public Integer getId() {
         return id;
     }
@@ -25,11 +23,4 @@ public class TypeDTO implements Serializable {
         this.typeName = typeName;
     }
 
-    public String getDespription() {
-        return despription;
-    }
-
-    public void setDespription(String despription) {
-        this.despription = despription;
-    }
 }

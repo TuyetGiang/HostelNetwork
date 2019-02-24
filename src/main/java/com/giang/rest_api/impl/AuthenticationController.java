@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController implements AuthenticationApi {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Override
     public ResponseEntity<UserDTO> checkLogin(String username, String password) {

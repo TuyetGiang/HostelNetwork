@@ -1,23 +1,37 @@
 package com.giang.service.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class PostDTO implements Serializable {
 
     private Integer id;
 
-    private Integer apartmentId;
+    private Integer typeId;
+
+    private Integer userId;
 
     private String title;
 
-    private LocalDateTime postDate;
+    private String content;
 
-    private LocalDateTime dueDate;
+    private String location;
+
+    private Integer area;
+
+    private Double price;
+
+    private Double deposit;
+
+    private LocalDate postDate;
+
+    private LocalDate dueDate;
 
     private Boolean status;
 
-    private String note;
+    private Boolean isPush;
+
+    private Boolean isBlocked;
 
     public Integer getId() {
         return id;
@@ -27,12 +41,20 @@ public class PostDTO implements Serializable {
         this.id = id;
     }
 
-    public Integer getApartmentId() {
-        return apartmentId;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setApartmentId(Integer apartmentId) {
-        this.apartmentId = apartmentId;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getTitle() {
@@ -43,19 +65,59 @@ public class PostDTO implements Serializable {
         this.title = title;
     }
 
-    public LocalDateTime getPostDate() {
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Integer getArea() {
+        return area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Double deposit) {
+        this.deposit = deposit;
+    }
+
+    public LocalDate getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDateTime postDate) {
+    public void setPostDate(LocalDate postDate) {
         this.postDate = postDate;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -67,11 +129,19 @@ public class PostDTO implements Serializable {
         this.status = status;
     }
 
-    public String getNote() {
-        return note;
+    public Boolean getPush() {
+        return isPush;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setPush(Boolean push) {
+        isPush = push;
+    }
+
+    public Boolean getBlocked() {
+        return isBlocked;
+    }
+
+    public void setBlocked(Boolean blocked) {
+        isBlocked = blocked;
     }
 }

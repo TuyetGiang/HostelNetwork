@@ -1,9 +1,11 @@
 package com.giang.repository.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "post")
 public class Post {
 
     @Id
@@ -11,23 +13,44 @@ public class Post {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "apartment_id")
-    private Integer apartmentId;
+    @Column(name = "type_id")
+    private Integer typeId;
+
+    @Column(name = "user_id")
+    private Integer userId;
 
     @Column(name = "title")
     private String title;
 
+    @Column(name = "content")
+    private String content;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "area")
+    private Integer area;
+
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "deposit")
+    private Double deposit;
+
     @Column(name = "post_date")
-    private LocalDateTime postDate;
+    private LocalDate postDate;
 
     @Column(name = "due_date")
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
 
     @Column(name = "status")
     private Boolean status;
 
-    @Column(name = "note")
-    private String note;
+    @Column(name = "is_push")
+    private Boolean isPush;
+
+    @Column(name = "is_blocked")
+    private Boolean isBlocked;
 
     public Integer getId() {
         return id;
@@ -37,12 +60,20 @@ public class Post {
         this.id = id;
     }
 
-    public Integer getApartmentId() {
-        return apartmentId;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setApartmentId(Integer apartmentId) {
-        this.apartmentId = apartmentId;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getTitle() {
@@ -53,19 +84,59 @@ public class Post {
         this.title = title;
     }
 
-    public LocalDateTime getPostDate() {
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Integer getArea() {
+        return area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Double deposit) {
+        this.deposit = deposit;
+    }
+
+    public LocalDate getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDateTime postDate) {
+    public void setPostDate(LocalDate postDate) {
         this.postDate = postDate;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -77,11 +148,19 @@ public class Post {
         this.status = status;
     }
 
-    public String getNote() {
-        return note;
+    public Boolean getPush() {
+        return isPush;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setPush(Boolean push) {
+        isPush = push;
+    }
+
+    public Boolean getBlocked() {
+        return isBlocked;
+    }
+
+    public void setBlocked(Boolean blocked) {
+        isBlocked = blocked;
     }
 }
