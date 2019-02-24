@@ -17,6 +17,9 @@ public class AppointmentDTO implements Serializable {
 
     private LocalDate createDate;
 
+    private Integer status;
+
+
     public Integer getId() {
         return id;
     }
@@ -63,5 +66,13 @@ public class AppointmentDTO implements Serializable {
 
     public void setCreateDate(LocalDate createDate) {
         this.createDate = createDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

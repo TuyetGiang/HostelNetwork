@@ -13,9 +13,6 @@ public class Type {
     @Column(name = "type_name")
     private String typeName;
 
-    @Column(name = "despription")
-    private String despription;
-
     public Integer getId() {
         return id;
     }
@@ -32,11 +29,4 @@ public class Type {
         this.typeName = typeName;
     }
 
-    public String getDespription() {
-        return despription;
-    }
-
-    public void setDespription(String despription) {
-        this.despription = despription;
-    }
 }

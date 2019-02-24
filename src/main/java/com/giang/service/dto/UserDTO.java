@@ -1,6 +1,7 @@
 package com.giang.service.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class UserDTO implements Serializable {
 
@@ -18,19 +19,13 @@ public class UserDTO implements Serializable {
 
     private String address;
 
-    private Integer roleId;
-
-    private String roleName;
-
     private Boolean isBlocked;
 
-    public String getRoleName() {
-        return roleName;
-    }
+    private Double amount;
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
+    private LocalDate registDate;
+
+    private Boolean isAdmin;
 
     public Integer getId() {
         return id;
@@ -88,19 +83,35 @@ public class UserDTO implements Serializable {
         this.address = address;
     }
 
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
     public Boolean getBlocked() {
         return isBlocked;
     }
 
     public void setBlocked(Boolean blocked) {
         isBlocked = blocked;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDate getRegistDate() {
+        return registDate;
+    }
+
+    public void setRegistDate(LocalDate registDate) {
+        this.registDate = registDate;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 }

@@ -29,26 +29,17 @@ public class User {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "role_id")
-    private Integer roleId;
-
     @Column(name = "regist_date")
     private LocalDate registDate;
+
+    @Column(name = "is_admin")
+    private Boolean isAdmin;
 
     @Column(name = "is_blocked")
     private Boolean isBlocked;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", referencedColumnName = "id", insertable = false, updatable = false)
-    private Role roleEntity;
-
-    public Role getRoleEntity() {
-        return roleEntity;
-    }
-
-    public void setRoleEntity(Role roleEntity) {
-        this.roleEntity = roleEntity;
-    }
+    @Column(name = "amount")
+    private Double amount;
 
     public Integer getId() {
         return id;
@@ -106,12 +97,12 @@ public class User {
         this.address = address;
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public Boolean getAdmin() {
+        return isAdmin;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 
     public LocalDate getRegistDate() {
@@ -128,5 +119,13 @@ public class User {
 
     public void setBlocked(Boolean blocked) {
         isBlocked = blocked;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public Double getAmount() {
+        return amount;
     }
 }

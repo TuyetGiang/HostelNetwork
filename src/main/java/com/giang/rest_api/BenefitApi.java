@@ -20,11 +20,10 @@ public interface BenefitApi {
     ResponseEntity<Boolean> delete(@PathVariable("id") Integer id);
 
 
-    @ApiOperation(tags = "BENEFIT", value = "Update a benefit", response = BenefitDTO.class)
+    @ApiOperation(tags = "BENEFIT", value = "Change name of a benefit", response = BenefitDTO.class)
     @PutMapping("/{id}")
-    ResponseEntity<BenefitDTO> update(@PathVariable("id") Integer id,
-                                      @RequestParam("key") String key,
-                                      @RequestParam("value") Object value);
+    ResponseEntity<BenefitDTO> changeName(@PathVariable("id") Integer id,
+                                          @RequestParam("benefitName") String benefitName);
 
     @ApiOperation(tags = "BENEFIT", value = "Get all benefits", response = BenefitDTO.class)
     @GetMapping("")

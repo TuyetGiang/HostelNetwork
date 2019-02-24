@@ -7,8 +7,6 @@ public class BenefitDTO implements Serializable {
 
     private String benefitName;
 
-    private String description;
-
     public Integer getId() {
         return id;
     }
@@ -23,13 +21,5 @@ public class BenefitDTO implements Serializable {
 
     public void setBenefitName(String benefitName) {
         this.benefitName = benefitName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

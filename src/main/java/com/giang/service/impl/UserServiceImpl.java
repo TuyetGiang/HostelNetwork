@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -49,10 +50,40 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    public List<UserDTO> findUserByTime(LocalDate from, LocalDate to) {
+        List<User> userEntities = userRepository.findUserByTime(from, to);
+        return userEntities.stream().map(this::mapToDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Boolean updateMoney(Integer id, Double money) {
+        User user = userRepository.findById(id);
+        Optional.ofNullable(user).orElseThrow(EntityNotFoundException::new);
+        userRepository.updateMoney(id, money + Optional.ofNullable(user.getAmount()).orElse(0D));
+        return true;
+    }
+
+    @Override
+    public Boolean changePassword(Integer id, String oldPassword, String newPassword) {
+        User user = userRepository.findById(id);
+        Optional.ofNullable(user).orElseThrow(EntityNotFoundException::new);
+        if (!user.getPassword().equals(oldPassword)) {
+            return false;
+        }
+        userRepository.updatePassword(id, newPassword);
+        return true;
+    }
+
+    @Override
+    public UserDTO getInforUser(Integer id) {
+        User user = userRepository.findById(id);
+        Optional.ofNullable(user).orElseThrow(EntityNotFoundException::new);
+        return mapToDto(user);
+    }
+
     private UserDTO mapToDto(User entity) {
         ModelMapper modelMapper = new ModelMapper();
-        UserDTO userDTO = modelMapper.map(entity, UserDTO.class);
-        userDTO.setRoleName(entity.getRoleEntity().getRoleName());
-        return userDTO;
+        return modelMapper.map(entity, UserDTO.class);
     }
 }

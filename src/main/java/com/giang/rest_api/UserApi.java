@@ -2,11 +2,12 @@ package com.giang.rest_api;
 
 import com.giang.service.dto.UserDTO;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -25,8 +26,22 @@ public interface UserApi {
 
     @ApiOperation(tags = {"USER"}, value = "Get all users is register between 2 time", response = UserDTO.class)
     @GetMapping("/times")
-    ResponseEntity<List<UserDTO>> getUserByTime(@RequestParam("start") LocalDateTime startDateTime,
-                                                @RequestParam("end") LocalDateTime endDateTime);
+    ResponseEntity<List<UserDTO>> getUserByTime(@RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+                                                @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to);
+
+    @ApiOperation(tags = "USER", response = Boolean.class, value = "Update money a user")
+    @PutMapping("/{id}/moneys")
+    ResponseEntity<Boolean> updateMoneyUser(@PathVariable("id") Integer id,
+                                            @RequestParam("money") Double amount);
 
 
+    @ApiOperation(tags = "USER", response = Boolean.class, value = "Change password of user")
+    @PutMapping("/{id}/passwords")
+    ResponseEntity<Boolean> changePassword(@PathVariable("id") Integer id,
+                                           @RequestParam("oldPassword") String oldPassword,
+                                           @RequestParam("newPassword") String newPassword);
+
+    @ApiOperation(tags = {"USER"}, response = UserDTO.class, value = "Get information of an users")
+    @GetMapping("/{id}")
+    ResponseEntity<UserDTO> getInforUser(@PathVariable("id") Integer id);
 }

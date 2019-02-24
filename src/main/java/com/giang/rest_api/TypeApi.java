@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Component
-@RequestMapping("types")
+@RequestMapping("/types")
 public interface TypeApi {
     @ApiOperation(tags = "TYPE", value = "Create new a TYPE", response = TypeDTO.class)
     @PostMapping("")
@@ -19,12 +19,10 @@ public interface TypeApi {
     @DeleteMapping("/{id}")
     ResponseEntity<Boolean> delete(@PathVariable("id") Integer id);
 
-
-    @ApiOperation(tags = "TYPE", value = "Update a TYPE", response = TypeDTO.class)
+    @ApiOperation(tags = "TYPE", value = "Change Type name", response = TypeDTO.class)
     @PutMapping("/{id}")
-    ResponseEntity<TypeDTO> update(@PathVariable("id") Integer id,
-                                   @RequestParam("key") String key,
-                                   @RequestParam("value") Object value);
+    ResponseEntity<TypeDTO> changeTypeName(@PathVariable("id") Integer id,
+                                           @RequestParam("name") String name);
 
     @ApiOperation(tags = "TYPE", value = "Get all TYPEs", response = TypeDTO.class)
     @GetMapping("")
@@ -32,7 +30,7 @@ public interface TypeApi {
 
     @ApiOperation(tags = "TYPE", value = "Get a TYPE", response = TypeDTO.class)
     @GetMapping("/{id}")
-    ResponseEntity<TypeDTO> getTYPE(@PathVariable("id") Integer id);
+    ResponseEntity<TypeDTO> getType(@PathVariable("id") Integer id);
 
 
 }
