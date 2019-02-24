@@ -49,9 +49,6 @@ public class Post {
     @Column(name = "is_push")
     private Boolean isPush;
 
-    @Column(name = "is_blocked")
-    private Boolean isBlocked;
-
     public Integer getId() {
         return id;
     }
@@ -156,11 +153,4 @@ public class Post {
         isPush = push;
     }
 
-    public Boolean getBlocked() {
-        return isBlocked;
-    }
-
-    public void setBlocked(Boolean blocked) {
-        isBlocked = blocked;
-    }
 }

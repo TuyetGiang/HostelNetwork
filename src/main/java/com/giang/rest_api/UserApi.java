@@ -36,7 +36,7 @@ public interface UserApi {
 
 
     @ApiOperation(tags = "USER", response = Boolean.class, value = "Change password of user")
-    @PutMapping("/{id}/password")
+    @PutMapping("/{id}/passwords")
     ResponseEntity<Boolean> changePassword(@PathVariable("id") Integer id,
                                            @RequestParam("oldPassword") String oldPassword,
                                            @RequestParam("newPassword") String newPassword);

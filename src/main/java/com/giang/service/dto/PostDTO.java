@@ -31,8 +31,6 @@ public class PostDTO implements Serializable {
 
     private Boolean isPush;
 
-    private Boolean isBlocked;
-
     public Integer getId() {
         return id;
     }
@@ -137,11 +135,4 @@ public class PostDTO implements Serializable {
         isPush = push;
     }
 
-    public Boolean getBlocked() {
-        return isBlocked;
-    }
-
-    public void setBlocked(Boolean blocked) {
-        isBlocked = blocked;
-    }
 }
