@@ -1,5 +1,7 @@
 package com.giang.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,13 +13,19 @@ public class AppointmentDTO implements Serializable {
 
     private Integer hostId;
 
-    private String location;
+    private Integer postId;
 
+    private String addressAppointment;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime time;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate createDate;
 
     private Integer status;
+
+    private String note;
 
 
     public Integer getId() {
@@ -44,12 +52,28 @@ public class AppointmentDTO implements Serializable {
         this.hostId = hostId;
     }
 
-    public String getLocation() {
-        return location;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public String getAddressAppointment() {
+        return addressAppointment;
+    }
+
+    public void setAddressAppointment(String addressAppointment) {
+        this.addressAppointment = addressAppointment;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public LocalDateTime getTime() {

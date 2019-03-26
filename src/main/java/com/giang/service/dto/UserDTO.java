@@ -1,5 +1,7 @@
 package com.giang.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -23,6 +25,7 @@ public class UserDTO implements Serializable {
 
     private Double amount;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate registDate;
 
     private Boolean isAdmin;
